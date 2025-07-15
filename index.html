@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday! 🎉</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Confetti Container -->
+    <div id="confetti-container"></div>
+    
+    <!-- Background Music -->
+    <audio id="background-music" loop>
+        <source src="https://www.soundjay.com/misc/sounds/happy-birthday-song.mp3" type="audio/mpeg">
+    </audio>
+    
+    <!-- Music Control -->
+    <div id="music-control">
+        <button id="music-toggle">🎵 Music</button>
+    </div>
+    
+    <!-- Welcome Section -->
+    <section id="welcome-section" class="section active">
+        <div class="balloon balloon1">🎈</div>
+        <div class="balloon balloon2">🎈</div>
+        <div class="balloon balloon3">🎈</div>
+        <div class="welcome-content">
+            <h1 class="birthday-title">Happy Birthday!</h1>
+            <p class="birthday-subtitle">Someone special has a surprise for you...</p>
+            <button id="start-button" class="celebration-button">Let's Celebrate! 🎉</button>
+        </div>
+    </section>
+    
+    <!-- Cake Cutting Section -->
+    <section id="cake-section" class="section">
+        <div class="cake-container">
+            <h2 class="section-title">Cut the Cake!</h2>
+            <div id="cake" class="cake">
+                <div class="cake-layer cake-bottom"></div>
+                <div class="cake-layer cake-top"></div>
+                <div class="cake-decoration">
+                    <div class="candle">🕯️</div>
+                    <div class="candle">🕯️</div>
+                    <div class="candle">🕯️</div>
+                </div>
+                <div id="cake-slice" class="cake-slice"></div>
+            </div>
+            <p class="instruction">Click and drag to cut the cake!</p>
+        </div>
+    </section>
+    
+    <!-- Presents Section -->
+    <section id="presents-section" class="section">
+        <h2 class="section-title">Time for Presents! 🎁</h2>
+        <div class="presents-container">
+            <div class="present" data-gift="necklace">
+                <div class="present-box">
+                    <div class="present-lid"></div>
+                    <div class="present-base"></div>
+                    <div class="present-ribbon-v"></div>
+                    <div class="present-ribbon-h"></div>
+                    <div class="present-bow">🎀</div>
+                </div>
+                <p class="present-label">Mum</p>
+            </div>
+            
+            <div class="present" data-gift="watch">
+                <div class="present-box">
+                    <div class="present-lid"></div>
+                    <div class="present-base"></div>
+                    <div class="present-ribbon-v"></div>
+                    <div class="present-ribbon-h"></div>
+                    <div class="present-bow">🎀</div>
+                </div>
+                <p class="present-label">Daddy</p>
+            </div>
+            
+            <div class="present" data-gift="love">
+                <div class="present-box">
+                    <div class="present-lid"></div>
+                    <div class="present-base"></div>
+                    <div class="present-ribbon-v"></div>
+                    <div class="present-ribbon-h"></div>
+                    <div class="present-bow">🎀</div>
+                </div>
+                <p class="present-label">Bro</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Gift Modals -->
+    <div id="gift-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="gift-content"></div>
+        </div>
+    </div>
+    
+    <!-- Gift Templates -->
+    <div id="necklace-template" class="gift-template">
+        <div class="gift-display">
+            <div class="necklace">
+                <div class="necklace-chain"></div>
+                <div class="necklace-pendant">💎</div>
+            </div>
+            <h3>Beautiful Diamond Necklace</h3>
+            <p>A stunning piece of jewelry, as beautiful as you are! ✨</p>
+        </div>
+    </div>
+    
+    <div id="watch-template" class="gift-template">
+        <div class="gift-display">
+            <div class="smart-watch">
+                <div class="watch-face">
+                    <div class="watch-screen">
+                        <div class="watch-time">12:00</div>
+                        <div class="watch-heart">❤️</div>
+                    </div>
+                </div>
+                <div class="watch-band"></div>
+            </div>
+            <h3>Smart Watch</h3>
+            <p>Stay connected and stylish with this amazing smartwatch! ⌚</p>
+        </div>
+    </div>
+    
+    <div id="love-template" class="gift-template">
+        <div class="gift-display">
+            <div class="love-message">
+                <div class="heart-container">
+                    <div class="heart">❤️</div>
+                    <div class="heart">💕</div>
+                    <div class="heart">💖</div>
+                </div>
+                <h3>My Love</h3>
+                <p>I'm broke, but my love for you is priceless! 💝</p>
+                <p class="love-note">Sometimes the best gifts don't cost money... they come from the heart! 💕</p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

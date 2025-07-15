@@ -1,0 +1,549 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #FF69B4, #FFB6C1, #DDA0DD);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Confetti Animation */
+#confetti-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #FFD700;
+    animation: confetti-fall 3s linear infinite;
+}
+
+.confetti:nth-child(2n) { background: #FF69B4; }
+.confetti:nth-child(3n) { background: #9370DB; }
+.confetti:nth-child(4n) { background: #32CD32; }
+.confetti:nth-child(5n) { background: #FF4500; }
+
+@keyframes confetti-fall {
+    0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Music Control */
+#music-control {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1001;
+}
+
+#music-toggle {
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+#music-toggle:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: scale(1.05);
+}
+
+/* Sections */
+.section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease;
+}
+
+.section.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Welcome Section */
+#welcome-section {
+    text-align: center;
+    color: white;
+}
+
+.balloon {
+    position: absolute;
+    font-size: 3rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+.balloon1 { top: 20%; left: 10%; animation-delay: 0s; }
+.balloon2 { top: 15%; right: 15%; animation-delay: 1s; }
+.balloon3 { top: 25%; left: 80%; animation-delay: 2s; }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+.birthday-title {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    text-shadow: 3px 3px 0px rgba(0,0,0,0.3);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.birthday-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.celebration-button {
+    background: linear-gradient(45deg, #FFD700, #FFA500);
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.celebration-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+/* Cake Section */
+.cake-container {
+    text-align: center;
+    color: white;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.3);
+}
+
+.cake {
+    position: relative;
+    width: 200px;
+    height: 150px;
+    margin: 2rem auto;
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M2 18l16-16" stroke="black" stroke-width="2"/></svg>'), auto;
+}
+
+.cake-layer {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 10px;
+}
+
+.cake-bottom {
+    bottom: 0;
+    width: 200px;
+    height: 80px;
+    background: linear-gradient(45deg, #8B4513, #A0522D);
+    border: 3px solid #654321;
+}
+
+.cake-top {
+    bottom: 60px;
+    width: 160px;
+    height: 60px;
+    background: linear-gradient(45deg, #FFB6C1, #FF69B4);
+    border: 3px solid #FF1493;
+}
+
+.cake-decoration {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+}
+
+.candle {
+    font-size: 1.5rem;
+    animation: flicker 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes flicker {
+    0% { opacity: 1; }
+    100% { opacity: 0.7; }
+}
+
+.cake-slice {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 100px solid #FFB6C1;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.cake-slice.visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(20px) rotate(10deg);
+}
+
+.instruction {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    color: white;
+    opacity: 0.9;
+}
+
+/* Presents Section */
+.presents-container {
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.present {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.present:hover {
+    transform: translateY(-10px);
+}
+
+.present-box {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    perspective: 1000px;
+}
+
+.present-lid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    background: linear-gradient(45deg, #FFD700, #FFA500);
+    border-radius: 5px 5px 0 0;
+    transform-origin: bottom;
+    transition: transform 0.8s ease;
+}
+
+.present-base {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background: linear-gradient(45deg, #FF69B4, #FF1493);
+    border-radius: 0 0 5px 5px;
+}
+
+.present-ribbon-v {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 100%;
+    background: linear-gradient(45deg, #32CD32, #228B22);
+}
+
+.present-ribbon-h {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 8px;
+    background: linear-gradient(45deg, #32CD32, #228B22);
+}
+
+.present-bow {
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.5rem;
+    z-index: 2;
+}
+
+.present-label {
+    text-align: center;
+    margin-top: 1rem;
+    color: white;
+    font-weight: bold;
+}
+
+.present.opened .present-lid {
+    transform: rotateX(-90deg);
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: 2rem;
+    border-radius: 20px;
+    width: 80%;
+    max-width: 500px;
+    position: relative;
+    animation: slideIn 0.5s ease;
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #aaa;
+}
+
+.close:hover {
+    color: #000;
+}
+
+/* Gift Displays */
+.gift-display {
+    text-align: center;
+    padding: 2rem;
+}
+
+.gift-display h3 {
+    font-size: 2rem;
+    margin: 1rem 0;
+    color: #333;
+}
+
+.gift-display p {
+    font-size: 1.2rem;
+    color: #666;
+    margin: 0.5rem 0;
+}
+
+/* Necklace */
+.necklace {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 2rem;
+}
+
+.necklace-chain {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 80px;
+    background: linear-gradient(to bottom, #FFD700, #FFA500);
+    border-radius: 1px;
+}
+
+.necklace-pendant {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 3rem;
+    animation: sparkle 2s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+    0%, 100% { transform: translateX(-50%) scale(1); }
+    50% { transform: translateX(-50%) scale(1.1); }
+}
+
+/* Smart Watch */
+.smart-watch {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 2rem;
+}
+
+.watch-face {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(45deg, #333, #666);
+    border-radius: 15px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.watch-screen {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 60px;
+    height: 60px;
+    background: #000;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.watch-time {
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.watch-heart {
+    font-size: 16px;
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+.watch-band {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120px;
+    height: 20px;
+    background: linear-gradient(45deg, #333, #666);
+    border-radius: 10px;
+    z-index: -1;
+}
+
+/* Love Message */
+.love-message {
+    text-align: center;
+}
+
+.heart-container {
+    margin: 2rem 0;
+}
+
+.heart {
+    display: inline-block;
+    font-size: 2rem;
+    margin: 0 0.5rem;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+.heart:nth-child(2) { animation-delay: 0.5s; }
+.heart:nth-child(3) { animation-delay: 1s; }
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.love-note {
+    font-style: italic;
+    font-size: 1rem;
+    color: #999;
+    margin-top: 1rem;
+}
+
+/* Hidden Templates */
+.gift-template {
+    display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .birthday-title {
+        font-size: 2.5rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .presents-container {
+        gap: 2rem;
+    }
+    
+    .modal-content {
+        width: 90%;
+        margin: 5% auto;
+    }
+    
+    .cake {
+        width: 150px;
+        height: 120px;
+    }
+    
+    .cake-bottom {
+        width: 150px;
+        height: 60px;
+    }
+    
+    .cake-top {
+        width: 120px;
+        height: 45px;
+        bottom: 45px;
+    }
+}
